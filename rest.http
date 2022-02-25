@@ -1,0 +1,28 @@
+###Test Route
+GET http://localhost:3000/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDUyMDgxMDQsImV4cCI6MTY0NTI5NDUwNCwiYXVkIjoiNjIwZmQ3ZDQ2ZGU4YTdjNWQ4NDUzYTg5IiwiaXNzIjoibmdtaW5oZHVjMTA3OEBnbWFpbC5jb20ifQ.FpuvowG6__CDHP9-6Xnek-Yfo7s_ooNtTatukhatVkg
+###Test Route Error 404
+GET http://localhost:3000/cccc
+
+###Auth - Login Route
+POST  http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username":"minhduc",
+    "password":"minhduc"
+}
+
+###Auth - Register Route
+POST  http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin",
+    "fullName":"Adminstator", 
+    "shortName":"Adminstator",
+    "avatar":"https://scontent.fdad3-4.fna.fbcdn.net/v/t1.6435-9/129953139_3137646623001883_3774607299243022827_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RG7rliPPDG8AX-mLuto&_nc_ht=scontent.fdad3-4.fna&oh=00_AT-QqeuJYb7gTkTL9T4NDCrJPXHtWcdPb9d1Hl93izmoBg&oe=623943D5",
+    "role":"admin",
+    "isAdmin":"true"
+}
