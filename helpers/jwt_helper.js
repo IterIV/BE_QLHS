@@ -1,5 +1,6 @@
 const JWT = require("jsonwebtoken");
 const createError = require("http-errors");
+const UserModel = require("../models/User.model");
 
 module.exports = {
   signAccessToken: (userId) => {
@@ -36,5 +37,20 @@ module.exports = {
       req.payload = payload;
       next();
     });
+  },
+  verifyTokenAndAdmin: async (req, res, next) => {
+    if (!req.payload) {
+      return next(createError.Unauthorized("Chưa xác thực token!"));
+    }
+    const user = await UserModel.findById(req.payload.aud);
+    if (!user) {
+      return next(
+        createError.NotFound("Không tìm thấy tài khoản trong hệ thống!")
+      );
+    }
+    if (!user.isAdmin) {
+      return next(createError.Unauthorized("Không có quyền truy cập!"));
+    }
+    next();
   },
 };

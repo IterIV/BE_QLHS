@@ -9,7 +9,7 @@ const { verifyAccessToken } = require("./helpers/jwt_helper");
 
 // TODO import route
 const AuthRoute = require("./routes/Auth.route");
-
+const UserRoute = require("./routes/User.route");
 // TODO create App express
 const app = express();
 
@@ -22,6 +22,7 @@ app.get("/", verifyAccessToken, async (req, res, next) => {
   res.json({ data: req.payload });
 });
 app.use("/auth", AuthRoute);
+app.use("/users", UserRoute);
 
 //! Handling Error 404
 app.use(async (req, res, next) => {

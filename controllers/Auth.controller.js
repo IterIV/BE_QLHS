@@ -3,55 +3,6 @@ const UserModel = require("../models/User.model");
 const { signAccessToken } = require("../helpers/jwt_helper");
 
 class AuthController {
-  async register(req, res, next) {
-    try {
-      const { username, password, fullName, shortName, avatar, role, isAdmin } =
-        req.body;
-
-      // ! check value request from client
-      if (!username || !password || !fullName || !shortName || !role) {
-        throw createError.BadRequest();
-      }
-
-      // ! check username is exist
-      const existUser = await UserModel.findOne({ username: username });
-      if (existUser) {
-        throw createError.Conflict(`Tài khoản ${username} đã được đăng ký!`);
-      }
-
-      // TODO create user model and save to db
-      const newUser = new UserModel({
-        username,
-        password,
-        fullName,
-        shortName,
-        avatar,
-        role,
-        isAdmin: isAdmin ? isAdmin : false,
-      });
-      const savedUser = await newUser.save();
-      if (savedUser) {
-        const { shortName, avatar, role } = savedUser;
-        res.json({
-          message: "Đăng ký thành công!",
-          data: {
-            shortName,
-            avatar,
-            role,
-          },
-        });
-      }
-      // * Return res to client
-
-      res.json({
-        message: "Đăng ký thành công!",
-        data: savedUser,
-      });
-    } catch (error) {
-      // ! Catch error
-      next(error);
-    }
-  }
   async login(req, res, next) {
     try {
       const { username, password } = req.body;

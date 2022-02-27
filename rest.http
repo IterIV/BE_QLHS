@@ -9,13 +9,14 @@ POST  http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username":"minhduc",
-    "password":"minhduc"
+    "username":"admin",
+    "password":"admin"
 }
 
-###Auth - Register Route
-POST  http://localhost:3000/auth/register
+###Auth - Register Admin
+POST  http://localhost:3000/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDU4Nzg3NTAsImV4cCI6MTY0NTk2NTE1MCwiYXVkIjoiNjIxNGIxNmUxY2VlOTdiZjM0OGRmYzcwIiwiaXNzIjoibmdtaW5oZHVjMTA3OEBnbWFpbC5jb20ifQ.d54vmU3fKmHCG03DMZqHRPFApVEOKga6BVa-r_YAoFA
 
 {
     "username":"admin",
@@ -26,3 +27,28 @@ Content-Type: application/json
     "role":"admin",
     "isAdmin":"true"
 }
+
+### Add new user
+POST  http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDU4Nzg4ODgsImV4cCI6MTY0NTk2NTI4OCwiYXVkIjoiNjIxYTFlNGYwOTFiYTU0ZGRjNmE3N2RhIiwiaXNzIjoibmdtaW5oZHVjMTA3OEBnbWFpbC5jb20ifQ.thNAraAREW8KL-7sDD1JiXX0HDhMeMeYzi0Zyv0q0jo
+
+{
+    "username":"vanthang",
+    "password":"vanthang",
+    "fullName":"Nguyễn Văn Thắng", 
+    "shortName":"Văn Thắng",
+    "avatar":"https://scontent.fdad3-4.fna.fbcdn.net/v/t1.18169-9/24312907_1485032541615339_5600151352905197053_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=l4Fa3C5wZXQAX-wYZyo&_nc_ht=scontent.fdad3-4.fna&oh=00_AT8Nyb91sK6RT8Q0bNMCwsUVEhplAKfpKqcYTXYRfw6Qmg&oe=623F1D7E",
+    "role":"canBo",
+    "isEnabled": false
+}
+
+### Get All users
+GET  http://localhost:3000/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDU4Nzk5MzAsImV4cCI6MTY0NTk2NjMzMCwiYXVkIjoiNjIxYTFlMDAwYzEyMDY3OGE2MTNhYzk4IiwiaXNzIjoibmdtaW5oZHVjMTA3OEBnbWFpbC5jb20ifQ.xzuXmlpZxwMiyrz12MHFrAba92hQ7GCVQ0uL2R3kDjc
+
+### Get by Id
+GET  http://localhost:3000/users/6214b16e1cee97bf348dfc70
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDU4Nzk5MzAsImV4cCI6MTY0NTk2NjMzMCwiYXVkIjoiNjIxYTFlMDAwYzEyMDY3OGE2MTNhYzk4IiwiaXNzIjoibmdtaW5oZHVjMTA3OEBnbWFpbC5jb20ifQ.xzuXmlpZxwMiyrz12MHFrAba92hQ7GCVQ0uL2R3kDjc
